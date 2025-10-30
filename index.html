@@ -24,6 +24,14 @@
     background-attachment: fixed;
     background-repeat: no-repeat;
   }
+  .highlight-on-load {
+    animation: highlight-box-shadow 2.5s ease-out;
+    border-radius: 0.5rem;
+  }
+  @keyframes highlight-box-shadow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+    50% { box-shadow: 0 0 15px 5px rgba(59, 130, 246, 0.4); }
+  }
 </style>
 </head>
   <body class="text-gray-800">

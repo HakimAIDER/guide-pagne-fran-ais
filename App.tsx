@@ -12,8 +12,9 @@ import ScrollProgressBar from './components/ScrollProgressBar';
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>(Page.Home);
   const [lastVisitedPage, setLastVisitedPage] = useState<Page | null>(null);
+  const [targetSection, setTargetSection] = useState<string | null>(null);
 
-  const handleNavigation = (page: Page) => {
+  const handleNavigation = (page: Page, targetId?: string) => {
     // Si nous naviguons VERS la page d'accueil...
     if (page === Page.Home) {
       // ...et que nous venons d'une page de contenu...
@@ -27,7 +28,10 @@ const App: React.FC = () => {
       setLastVisitedPage(null);
     }
     setCurrentPage(page);
+    setTargetSection(targetId || null);
   };
+  
+  const clearTargetSection = () => setTargetSection(null);
 
 
   const renderPage = () => {
@@ -35,11 +39,11 @@ const App: React.FC = () => {
       case Page.Home:
         return <HomePage setCurrentPage={handleNavigation} lastVisitedPage={lastVisitedPage} />;
       case Page.Retirement:
-        return <RetirementSavingsPage />;
+        return <RetirementSavingsPage setCurrentPage={handleNavigation} />;
       case Page.Employee:
         return <EmployeeSavingsPage />;
       case Page.LifeInsurance:
-        return <LifeInsurancePage />;
+        return <LifeInsurancePage targetSection={targetSection} clearTargetSection={clearTargetSection} />;
       case Page.Simulator:
         return <SimulatorPage />;
       default:

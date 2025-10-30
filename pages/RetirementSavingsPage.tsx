@@ -1,7 +1,36 @@
 import React from 'react';
 import ContentSection from '../components/ContentSection';
+import { Page } from '../types';
 
-const RetirementSavingsPage: React.FC = () => {
+interface RetirementSavingsPageProps {
+  setCurrentPage: (page: Page, targetId?: string) => void;
+}
+
+const RetirementSavingsPage: React.FC<RetirementSavingsPageProps> = ({ setCurrentPage }) => {
+  
+  const releaseCases = [
+    { 
+      title: "Acquisition de la résidence principale", 
+      description: "(Sauf pour les droits issus des versements obligatoires).",
+      isUnique: true
+    },
+    { 
+      title: "Invalidité", 
+      description: "(Vous, votre conjoint ou partenaire de PACS, vos enfants).",
+      linkPage: Page.LifeInsurance,
+      linkTarget: "deblocage-assurance-vie"
+    },
+    { title: "Décès du conjoint ou du partenaire de PACS.", isUnique: true },
+    { title: "Expiration des droits à l'assurance chômage.", isUnique: true },
+    { title: "Surendettement.", isUnique: true },
+    { 
+      title: "Cessation d'activité non salariée", 
+      description: "Suite à un jugement de liquidation judiciaire.",
+      linkPage: Page.LifeInsurance,
+      linkTarget: "deblocage-assurance-vie"
+    }
+  ];
+
   return (
     <div className="bg-white/80 backdrop-blur-md p-8 rounded-xl shadow-lg">
       <header className="mb-10 text-center">
@@ -52,14 +81,27 @@ const RetirementSavingsPage: React.FC = () => {
 
       <ContentSection title="Cas de déblocage anticipé" icon="fa-unlock-alt">
         <p>Bien que l'épargne soit bloquée jusqu'à la retraite, la loi prévoit des cas de déblocage exceptionnel pour faire face à certains aléas de la vie :</p>
-        <ul>
-            <li>Acquisition de la résidence principale (sauf pour les droits issus des versements obligatoires).</li>
-            <li>Invalidité (vous, votre conjoint ou partenaire de PACS, vos enfants).</li>
-            <li>Décès du conjoint ou du partenaire de PACS.</li>
-            <li>Expiration des droits à l'assurance chômage.</li>
-            <li>Surendettement.</li>
-            <li>Cessation d'activité non salariée suite à un jugement de liquidation judiciaire.</li>
-        </ul>
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          {releaseCases.map((item, index) => (
+            <div
+              key={index}
+              onClick={item.linkPage ? () => setCurrentPage(item.linkPage, `#${item.linkTarget}`) : undefined}
+              className={`p-4 rounded-lg border-2 transition-all duration-300 ${
+                item.linkPage 
+                  ? 'cursor-pointer border-transparent bg-blue-50/70 hover:border-blue-500 hover:bg-blue-100/80' 
+                  : 'border-transparent bg-gray-50/70'
+              }`}
+            >
+              <p className="font-bold text-gray-800">{item.title}</p>
+              {item.description && <p className="text-sm text-gray-600">{item.description}</p>}
+              {item.linkPage && (
+                <p className="text-xs text-blue-700 font-semibold mt-2 flex items-center">
+                  <i className="fas fa-link mr-2"></i> Cas similaire en Assurance Vie
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
       </ContentSection>
     </div>
   );
