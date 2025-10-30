@@ -7,9 +7,10 @@ import TestimonialCard from '../components/TestimonialCard';
 
 interface HomePageProps {
   setCurrentPage: (page: Page) => void;
+  lastVisitedPage: Page | null;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
+const HomePage: React.FC<HomePageProps> = ({ setCurrentPage, lastVisitedPage }) => {
   const faqs = [
     {
       question: "Quelle est la différence entre un PER et une Assurance Vie ?",
@@ -63,6 +64,54 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
     }
   ];
 
+  const getPersonalizedAdvice = () => {
+    let advice = {
+      title: "Conseils pour bien démarrer",
+      icon: "fa-lightbulb",
+      tips: [
+        { icon: "fa-hourglass-start", title: "Commencez le plus tôt possible", text: "Le temps est votre meilleur allié. Grâce aux intérêts composés, même de petites sommes investies tôt peuvent croître de manière significative." },
+        { icon: "fa-bullseye", title: "Définissez vos objectifs", text: "Un but clair (retraite, achat immobilier) vous aidera à choisir la bonne stratégie et à rester motivé sur le long terme." },
+      ]
+    };
+
+    switch (lastVisitedPage) {
+      case Page.Retirement:
+        advice = {
+          title: "Optimiser votre Épargne Retraite",
+          icon: "fa-umbrella-beach",
+          tips: [
+            { icon: "fa-file-invoice-dollar", title: "Profitez de l'avantage fiscal", text: "N'oubliez pas de déduire vos versements PER de votre revenu imposable pour réduire vos impôts actuels." },
+            { icon: "fa-cogs", title: "Pensez à la gestion pilotée", text: "Si vous n'êtes pas expert, la gestion pilotée sécurise automatiquement votre capital à l'approche de la retraite. C'est la tranquillité d'esprit." },
+          ]
+        };
+        break;
+      case Page.Employee:
+        advice = {
+          title: "Booster votre Épargne Salariale",
+          icon: "fa-users",
+          tips: [
+            { icon: "fa-gifts", title: "Maximisez l'abondement", text: "C'est de l'argent 'gratuit'. Versez en priorité le montant qui déclenche l'abondement maximal de votre entreprise." },
+            { icon: "fa-hand-holding-usd", title: "Défiscalisez vos primes", text: "Placer votre intéressement et participation sur vos plans d'épargne vous exonère de l'impôt sur le revenu sur ces sommes." },
+          ]
+        };
+        break;
+      case Page.LifeInsurance:
+        advice = {
+          title: "Tirer parti de votre Assurance Vie",
+          icon: "fa-shield-alt",
+          tips: [
+            { icon: "fa-user-shield", title: "Soignez la clause bénéficiaire", text: "Une clause bien rédigée est la clé pour une transmission optimisée et sans surprise pour vos proches." },
+            { icon: "fa-calendar-check", title: "Visez l'horizon des 8 ans", text: "La fiscalité de vos retraits devient très avantageuse après 8 ans. C'est un cap stratégique à anticiper pour vos projets." },
+          ]
+        };
+        break;
+      default:
+        break;
+    }
+    return advice;
+  };
+
+  const adviceContent = getPersonalizedAdvice();
 
   return (
     <div className="space-y-16 md:space-y-24">
@@ -83,7 +132,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
       </section>
 
       {/* Info Cards Section */}
-      <section>
+      <section className="bg-white/80 backdrop-blur-md p-8 md:p-12 rounded-2xl shadow-lg">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Explorez les solutions d'épargne</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <InfoCard
@@ -136,7 +185,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
       </section>
       
       {/* Key Figures Section */}
-      <section>
+      <section className="bg-white/80 backdrop-blur-md p-8 md:p-12 rounded-2xl shadow-lg">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">L'épargne en France en quelques chiffres</h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             <KeyFigure icon="fa-chart-line" value="150 Md€" label="d'encours sur les PER en France" />
@@ -163,9 +212,32 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
             </button>
         </div>
       </section>
+      
+      {/* Personalized Advice Section */}
+      <section className="bg-white/80 backdrop-blur-md p-8 md:p-12 rounded-2xl shadow-lg">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 flex items-center justify-center">
+            <i className={`fas ${adviceContent.icon} mr-4 text-blue-600`}></i>
+            {adviceContent.title}
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {adviceContent.tips.map((tip, index) => (
+                <div key={index} className="bg-gray-50/70 p-6 rounded-lg flex items-start">
+                    <div className="flex-shrink-0 mr-4">
+                        <div className="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600">
+                            <i className={`fas ${tip.icon} text-xl`}></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-bold text-gray-800 mb-1">{tip.title}</h3>
+                        <p className="text-gray-600">{tip.text}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+      </section>
 
       {/* Testimonials Section */}
-      <section>
+      <section className="bg-white/80 backdrop-blur-md p-8 md:p-12 rounded-2xl shadow-lg">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Ce que nos utilisateurs en disent</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
@@ -186,7 +258,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
           {faqs.map((faq, index) => (
             <FAQItem key={index} question={faq.question}>
               {faq.answer}
-            </FAQ-Item>
+            </FAQItem>
           ))}
         </div>
       </section>
