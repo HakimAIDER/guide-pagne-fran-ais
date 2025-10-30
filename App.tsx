@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -8,6 +7,7 @@ import EmployeeSavingsPage from './pages/EmployeeSavingsPage';
 import LifeInsurancePage from './pages/LifeInsurancePage';
 import SimulatorPage from './pages/SimulatorPage';
 import { Page } from './types';
+import ScrollProgressBar from './components/ScrollProgressBar';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>(Page.Home);
@@ -32,6 +32,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col font-sans">
       <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      {currentPage !== Page.Home && <ScrollProgressBar />}
       <main className="flex-grow container mx-auto px-4 py-8 md:py-12">
         {renderPage()}
       </main>

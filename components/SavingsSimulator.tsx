@@ -30,6 +30,11 @@ const SavingsSimulator: React.FC = () => {
     const [monthlyContribution, setMonthlyContribution] = useState(200);
     const [duration, setDuration] = useState(20);
     const [annualRate, setAnnualRate] = useState(5);
+    const [lineVisibility, setLineVisibility] = useState({
+        finalCapital: true,
+        totalContributions: true,
+        totalInterest: false,
+    });
 
     const simulationData = useMemo<SimulationResult[]>(() => {
         const data: SimulationResult[] = [];
@@ -114,10 +119,26 @@ const SavingsSimulator: React.FC = () => {
                             <YAxis tickFormatter={(tick) => formatCurrency(tick)} width={80}/>
                             <Tooltip formatter={(value: number) => formatCurrency(value)} />
                             <Legend />
-                            <Line type="monotone" name="Capital final" dataKey="finalCapital" stroke="#4f46e5" strokeWidth={3} dot={false}/>
-                            <Line type="monotone" name="Versements" dataKey="totalContributions" stroke="#10b981" strokeWidth={2} dot={false} />
+                            {lineVisibility.finalCapital && <Line type="monotone" name="Capital final" dataKey="finalCapital" stroke="#4f46e5" strokeWidth={3} dot={false}/>}
+                            {lineVisibility.totalContributions && <Line type="monotone" name="Versements" dataKey="totalContributions" stroke="#10b981" strokeWidth={2} dot={false} />}
+                            {lineVisibility.totalInterest && <Line type="monotone" name="Intérêts générés" dataKey="totalInterest" stroke="#f59e0b" strokeWidth={2} dot={false} />}
                         </LineChart>
                     </ResponsiveContainer>
+                </div>
+
+                <div className="flex justify-center items-center space-x-4 md:space-x-6 mt-4 text-sm">
+                    <label className="flex items-center cursor-pointer">
+                        <input type="checkbox" checked={lineVisibility.finalCapital} onChange={() => setLineVisibility(prev => ({...prev, finalCapital: !prev.finalCapital}))} className="h-4 w-4 accent-indigo-600 rounded" />
+                        <span className="ml-2 text-gray-700">Capital final</span>
+                    </label>
+                    <label className="flex items-center cursor-pointer">
+                        <input type="checkbox" checked={lineVisibility.totalContributions} onChange={() => setLineVisibility(prev => ({...prev, totalContributions: !prev.totalContributions}))} className="h-4 w-4 accent-green-600 rounded" />
+                        <span className="ml-2 text-gray-700">Versements</span>
+                    </label>
+                    <label className="flex items-center cursor-pointer">
+                        <input type="checkbox" checked={lineVisibility.totalInterest} onChange={() => setLineVisibility(prev => ({...prev, totalInterest: !prev.totalInterest}))} className="h-4 w-4 accent-amber-500 rounded" />
+                        <span className="ml-2 text-gray-700">Intérêts générés</span>
+                    </label>
                 </div>
             </div>
         </div>

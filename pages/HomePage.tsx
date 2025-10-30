@@ -82,16 +82,6 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
         </button>
       </section>
 
-      {/* Key Figures Section */}
-      <section>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-            <KeyFigure icon="fa-chart-line" value="150 Md€" label="d'encours sur les PER en France" />
-            <KeyFigure icon="fa-gift" value="1 900 Md€" label="d'encours sur l'Assurance Vie" />
-            <KeyFigure icon="fa-users-cog" value="12 M" label="de salariés couverts par l'épargne salariale" />
-            <KeyFigure icon="fa-euro-sign" value="4 600 €" label="d'abattement fiscal annuel sur l'Assurance Vie" />
-        </div>
-      </section>
-
       {/* Info Cards Section */}
       <section>
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Explorez les solutions d'épargne</h2>
@@ -116,7 +106,46 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
           />
         </div>
       </section>
+
+      {/* Our Approach Section */}
+      <section className="bg-white/80 backdrop-blur-md p-8 md:p-12 rounded-2xl shadow-lg">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Notre Approche : Simplifier l'Épargne</h2>
+        <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div className="flex flex-col items-center">
+            <div className="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mb-4">
+              <i className="fas fa-bullseye text-2xl"></i>
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">Clarté</h3>
+            <p className="text-gray-600">Nous traduisons le jargon financier en langage simple pour que vous preniez des décisions éclairées.</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mb-4">
+              <i className="fas fa-book-reader text-2xl"></i>
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">Pédagogie</h3>
+            <p className="text-gray-600">Nous vous donnons les clés pour comprendre les mécanismes de chaque solution d'épargne.</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mb-4">
+              <i className="fas fa-rocket text-2xl"></i>
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">Action</h3>
+            <p className="text-gray-600">Notre simulateur vous permet de passer de la théorie à la pratique et de concrétiser vos projets.</p>
+          </div>
+        </div>
+      </section>
       
+      {/* Key Figures Section */}
+      <section>
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">L'épargne en France en quelques chiffres</h2>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+            <KeyFigure icon="fa-chart-line" value="150 Md€" label="d'encours sur les PER en France" />
+            <KeyFigure icon="fa-gift" value="1 900 Md€" label="d'encours sur l'Assurance Vie" />
+            <KeyFigure icon="fa-users-cog" value="12 M" label="de salariés couverts par l'épargne salariale" />
+            <KeyFigure icon="fa-euro-sign" value="4 600 €" label="d'abattement fiscal annuel sur l'Assurance Vie" />
+        </div>
+      </section>
+
       {/* For Business Section */}
       <section className="bg-gray-800/90 backdrop-blur-md text-white p-8 md:p-12 rounded-2xl shadow-lg">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -157,7 +186,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
           {faqs.map((faq, index) => (
             <FAQItem key={index} question={faq.question}>
               {faq.answer}
-            </FAQItem>
+            </FAQ-Item>
           ))}
         </div>
       </section>
