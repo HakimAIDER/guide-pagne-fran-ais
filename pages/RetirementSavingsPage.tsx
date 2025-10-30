@@ -10,7 +10,7 @@ const RetirementSavingsPage: React.FC = () => {
         <p className="text-lg text-gray-600 mt-2">Préparez sereinement votre avenir avec le Plan d'Épargne Retraite.</p>
       </header>
       
-      <ContentSection title="Qu'est-ce que le PER ?" icon="fa-info-circle">
+      <ContentSection title="Qu'est-ce que le PER ?" icon="fa-file-signature">
         <p>Le Plan d’Épargne Retraite (PER) est un produit d'épargne à long terme qui vous permet de vous constituer un capital ou une rente pour votre retraite. Il a remplacé les anciens produits comme le PERP, Madelin, PERCO et Article 83.</p>
         <p>Le PER se décline en trois compartiments :</p>
         <ul>
@@ -20,7 +20,7 @@ const RetirementSavingsPage: React.FC = () => {
         </ul>
       </ContentSection>
 
-      <ContentSection title="Avantages pour le particulier" icon="fa-user-check">
+      <ContentSection title="Avantages pour le particulier" icon="fa-wallet">
         <ul>
             <li><strong>Avantage fiscal à l'entrée :</strong> Les versements volontaires peuvent être déduits de votre revenu imposable, dans la limite d'un plafond. C'est un excellent moyen de réduire vos impôts.</li>
             <li><strong>Flexibilité des sorties :</strong> Au moment de la retraite, vous pouvez choisir de récupérer votre épargne sous forme de capital (en une ou plusieurs fois), de rente viagère, ou une combinaison des deux.</li>

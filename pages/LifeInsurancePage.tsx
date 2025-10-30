@@ -10,7 +10,7 @@ const LifeInsurancePage: React.FC = () => {
         <p className="text-lg text-gray-600 mt-2">Le couteau suisse de l'épargne : flexibilité, fiscalité et transmission.</p>
       </header>
 
-      <ContentSection title="Qu'est-ce que l'assurance vie ?" icon="fa-info-circle">
+      <ContentSection title="Qu'est-ce que l'assurance vie ?" icon="fa-book-open">
         <p>L'assurance vie est un produit d'épargne qui permet au souscripteur d'investir de l'argent dans le but de le faire fructifier. Contrairement à ce que son nom suggère, elle est avant tout un outil d'épargne à moyen ou long terme. Elle peut servir à financer un projet, préparer sa retraite ou organiser sa succession.</p>
         <p>Les sommes sont investies sur deux types de supports :</p>
         <ul>
@@ -41,12 +41,12 @@ const LifeInsurancePage: React.FC = () => {
         </ul>
       </ContentSection>
 
-       <ContentSection title="La Clause Bénéficiaire : Un Outil Clé" icon="fa-key">
+       <ContentSection title="La Clause Bénéficiaire : Un Outil Clé" icon="fa-user-shield">
         <p>La clause bénéficiaire est le cœur de l'assurance vie pour la transmission. Elle vous permet de désigner la ou les personnes qui recevront le capital à votre décès. Une rédaction précise est essentielle pour garantir que vos volontés soient respectées.</p>
         <p>Pour les versements effectués avant vos 70 ans, chaque bénéficiaire désigné profite d'un abattement de <strong>152 500 €</strong> sur les capitaux reçus. Au-delà, les sommes sont taxées à 20% puis 31,25%. Cela en fait un outil de succession inégalé.</p>
       </ContentSection>
 
-      <ContentSection title="Quand et comment débloquer son épargne ?" icon="fa-unlock-alt">
+      <ContentSection title="Quand et comment débloquer son épargne ?" icon="fa-hand-holding-usd">
         <p>Il n'y a pas de "déblocage" au sens strict car l'argent est toujours disponible. On parle de <strong>rachat</strong>. Vous pouvez faire un rachat partiel ou total à tout moment.</p>
         <p>La fiscalité s'applique uniquement sur la part de gains comprise dans votre rachat. Elle est plus avantageuse après 8 ans.</p>
         <p>Certaines situations permettent une exonération totale d'impôt sur les plus-values (mais pas des prélèvements sociaux) lors d'un rachat :</p>

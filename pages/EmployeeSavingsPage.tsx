@@ -10,7 +10,7 @@ const EmployeeSavingsPage: React.FC = () => {
         <p className="text-lg text-gray-600 mt-2">Un dispositif gagnant-gagnant pour les salariés et l'entreprise.</p>
       </header>
 
-      <ContentSection title="Qu'est-ce que l'épargne salariale ?" icon="fa-info-circle">
+      <ContentSection title="Qu'est-ce que l'épargne salariale ?" icon="fa-briefcase">
         <p>L'épargne salariale est un système d'épargne collectif mis en place au sein de certaines entreprises. Elle permet aux salariés de se constituer un portefeuille de valeurs mobilières (actions, obligations, etc.) avec l'aide de leur employeur.</p>
         <p>Les deux principaux plans sont :</p>
         <ul>
@@ -30,7 +30,7 @@ const EmployeeSavingsPage: React.FC = () => {
           </ul>
       </ContentSection>
 
-      <ContentSection title="Avantages pour les salariés" icon="fa-user-check">
+      <ContentSection title="Avantages pour les salariés" icon="fa-gift">
         <ul>
           <li><strong>Abondement :</strong> L'entreprise peut compléter vos versements jusqu'à 300% (dans certaines limites). C'est un puissant levier de performance.</li>
           <li><strong>Exonération fiscale :</strong> Les sommes versées (participation, intéressement, abondement) sont exonérées d'impôt sur le revenu. Les plus-values sont exonérées d'impôt (hors prélèvements sociaux de 17,2%).</li>
